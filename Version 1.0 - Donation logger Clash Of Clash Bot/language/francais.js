@@ -12,6 +12,11 @@ module.exports = {
             optdescription: "Choisissez le channel",
             reply:"Le channel auto des dons a été modifié pour",
         },
+        removechannel: {
+            description: "Permet de désactiver le suivi des dons",
+            optdescription: "Choisissez le channel",
+            reply:"Le channel auto des dons à été retiré",
+        },
     },
     ready: {
         client:"Client connecté sur",

@@ -8,13 +8,8 @@ const lang = require(`../language/${config.language}.js`)
 module.exports = {
     
     data: new SlashCommandBuilder()
-        .setName('setchanneldon')
-        .setDescription(lang.donation.setchannel.description)
-        .addChannelOption(option =>
-            option.setName("channel")
-                .setDescription(lang.donation.setchannel.optdescription)
-                .setRequired(true)
-            )
+        .setName('removechanneldon')
+        .setDescription(lang.donation.removechannel.description)
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
     async execute(interaction) {
 
@@ -22,11 +17,11 @@ module.exports = {
 
         const channel = interaction.options.getChannel('channel');
         const savejson = {
-            "channeldon": `${channel.id}`
+            "channeldon": ``
         }
         
         fs.writeFileSync("./config/autoconfig.json", JSON.stringify(savejson, null, 2))
-        interaction.reply({ content: `${lang.donation.setchannel.reply} ${channel}`, ephemeral: true });
+        interaction.reply({ content: `${lang.donation.removechannel.reply}`, ephemeral: true });
     } catch (error) {
         return console.log(error);
     }

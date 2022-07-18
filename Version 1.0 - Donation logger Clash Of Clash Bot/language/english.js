@@ -12,6 +12,11 @@ module.exports = {
             optdescription: "Enter the chanel",
             reply:"Donation auto channel changed to",
         },
+        removechannel: {
+            description: "Disable donation log",
+            optdescription: "Enter the chanel",
+            reply:"The donation auto channel has been removed.",
+        },
     },
     ready: {
         client:"Client connected on",
