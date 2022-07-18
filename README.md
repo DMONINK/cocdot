@@ -17,7 +17,7 @@ Put a star to support me <3 !
   - see how many troops sent
   - see how many troops received
 - Commands
-	- /setchanneldon | changer the donation channel
+	- /setchanneldon | change the donation channel
 - Language
 	- french / english
 
