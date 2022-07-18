@@ -1,4 +1,4 @@
-# ⚠️ You need to inviet your bot with OAuth2 application.commands 
+# ⚠️ You need to invite your bot with OAuth2 application.commands 
 
 # How setup the bot ?
 
