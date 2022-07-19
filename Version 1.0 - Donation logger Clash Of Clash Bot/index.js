@@ -152,8 +152,6 @@ const clan = await clash.getClan(config.clantag);
 			xb++;
 		})
 		//
-		console.log(newdone)
-		console.log(finaldone)
 		const embeddon = new EmbedBuilder()
 		.setTitle(clan.name + `(${clan.tag})`)
 		.setURL(clan.shareLink)
