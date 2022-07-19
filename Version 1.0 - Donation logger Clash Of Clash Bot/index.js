@@ -104,7 +104,7 @@ const clan = await clash.getClan(config.clantag);
 		var znewdone = [];
 		var newdone = [];
 		var i = 0;
-		newClan.members.forEach(me => {
+		await newClan.members.forEach(me => {
 			var newdon = me.donations
 			newdone.push(`${newdon}` - `${olddon[i]}`)
 			var calc = `${newdon}` - `${olddon[i]}`;
@@ -134,7 +134,7 @@ const clan = await clash.getClan(config.clantag);
 		var znewrecue = [];
 		var newrecue = [];
 		var ib = 0;
-		newClan.members.forEach(me => {
+		await newClan.members.forEach(me => {
 			var newrecu = me.received
 			newrecue.push(`${newrecu}` - `${oldrecu[ib]}`)
 			var calc = `${newrecu}` - `${oldrecu[ib]}`;
