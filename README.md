@@ -22,4 +22,4 @@ Put a star to support me <3 !
 - Language
 	- french / english
 
-![imagedon](https://github.com/ifanoxy/Clash-of-clan-Bot/blob/main/Version%201.0%20-%20Donation%20logger%20Clash%20Of%20Clash%20Bot/img/donexample.png)
+![imagedon](https://github.com/ifanoxy/Clash-of-clan-Bot/blob/main/Version%201.0%20-%20Donation%20logger%20Clash%20Of%20Clans%20Bot/img/donexample.png)
