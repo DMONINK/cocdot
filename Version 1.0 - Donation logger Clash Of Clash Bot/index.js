@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits, Partials, Activity, ActivityType, EmbedBuilder, Collection, InteractionCollector, InteractionType } = require('discord.js');
 const config = require('./config/config.js');
-const channel = require('./config/channel.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel] });
 const clash = require('./config/clan.js').clash;
 const chalk = require('chalk');
@@ -9,7 +8,9 @@ const embed = require('./config/embed.js');
 const fs = require('fs');
 const {REST} = require('@discordjs/rest');
 const {Routes} = require('discord-api-types/v9');
-const lang = require(`./language/${config.language}.js`)
+const lang = require(`./language/${config.language}.js`);
+
+
 
 //ADD SLASH COMMAND
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -94,7 +95,7 @@ clash.events.setClanEvent({
 })
 
 clash.on('ClanDonationChange', async (oldClan, newClan) => {
-	
+
 const clan = await clash.getClan(config.clantag);
 		var olddon = [];
 		oldClan.members.forEach(me => {
@@ -106,7 +107,7 @@ const clan = await clash.getClan(config.clantag);
 		var i = 0;
 		await newClan.members.forEach(me => {
 			var newdon = me.donations
-			newdone.push(`${newdon}` - `${olddon[i]}`)
+			newdone.push(`${newdon}` -  `${olddon[i]}`)
 			var calc = `${newdon}` - `${olddon[i]}`;
 			if(calc == "0" || 0){}else{var finalcalc = `${emoji.fleche_droite}ㅤㅤㅤ${calc}\n`}
 			znewdone.push(finalcalc)
@@ -134,6 +135,7 @@ const clan = await clash.getClan(config.clantag);
 		var znewrecue = [];
 		var newrecue = [];
 		var ib = 0;
+		 
 		await newClan.members.forEach(me => {
 			var newrecu = me.received
 			newrecue.push(`${newrecu}` - `${oldrecu[ib]}`)
@@ -142,6 +144,8 @@ const clan = await clash.getClan(config.clantag);
 			znewrecue.push(finalcalc)
 			ib++;
 		})
+
+
 
 	
 		var finalrecue = [];
@@ -166,13 +170,22 @@ const clan = await clash.getClan(config.clantag);
 		.setColor(embed.color.donationauto)
 		.setThumbnail(clan.badge.url);
 
-	client.channels.cache.get(channel.donation).send({embeds: [embeddon]})
 
-})
+		
+		var data = fs.readFileSync("./config/autoconfig.json", "utf-8")
+		var test = (((((data.replace(`"channeldon": "`, '')).replace('"', '')).replace(`{\n`, '')).replace(`\n}`, '')).replace("  ",""));
+		if(test == ""){console.log(chalk.grey("New donation ! but the donation has not activad"))}else{
+		client.channels.cache.get(test).send({embeds: [embeddon]})
+		}
+})	
+
 
 //CONSOLE CONFIRMATION + BOT ACTIVITIES
 client.once('ready', async () => {
 	console.log(chalk.blueBright(lang.ready.client + client.user.username ));
+	if(clash.inMaintenance){
+		return console.log(chalk.redBright("l'API est en maintenance"))
+	}
 	const clan = await clash.getClan(config.clantag);
 	console.log(chalk.blueBright(lang.ready.clash + clan.name));
 

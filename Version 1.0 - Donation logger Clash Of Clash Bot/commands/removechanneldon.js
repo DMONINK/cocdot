@@ -15,7 +15,6 @@ module.exports = {
 
         try{
 
-        const channel = interaction.options.getChannel('channel');
         const savejson = {
             "channeldon": ``
         }
